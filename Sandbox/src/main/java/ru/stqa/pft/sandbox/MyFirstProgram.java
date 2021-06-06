@@ -7,12 +7,8 @@ public class MyFirstProgram {
 		System.out.println("Hello, world!");
 		Square s = new Square(5);
 		Rectangle r = new Rectangle(4, 6);
-		Point start = new Point();
-		Point end = new Point ();
-		start.x = 1;
-		start.y = 1;
-		end.x = 1;
-		end.y = 2;
+		Point start = new Point(1,2);
+		Point end = new Point (3,4);
 		double d = distance(start, end);
 		System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area());
 		System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
