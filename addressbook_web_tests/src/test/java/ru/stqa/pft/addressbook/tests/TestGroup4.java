@@ -10,7 +10,7 @@ public class TestGroup4 extends TestBase {
     app.getGroupHelper().initGroupCreation();
     app.getGroupHelper().fillGroupForm();
     app.getGroupHelper().submitGroupCreation();
-    app.Logout();
+    app.getNavigationHelper().Logout();
   }
 
 }

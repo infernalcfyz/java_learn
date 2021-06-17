@@ -4,32 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class GroupHelper {
+public class ContactHelper {
     private WebDriver wd;
-    public GroupHelper(WebDriver wd) {
+
+    public ContactHelper(WebDriver wd) {
+
         this.wd = wd;
     }
-
-    public void submitGroupCreation() {
-      wd.findElement(By.name("submit")).click();
-    }
-
-    public void fillGroupForm() {
-      wd.findElement(By.name("group_name")).click();
-      wd.findElement(By.name("group_name")).clear();
-      wd.findElement(By.name("group_name")).sendKeys("11");
-      wd.findElement(By.name("group_header")).click();
-      wd.findElement(By.name("group_header")).clear();
-      wd.findElement(By.name("group_header")).sendKeys("22");
-      wd.findElement(By.name("group_footer")).click();
-      wd.findElement(By.name("group_footer")).clear();
-      wd.findElement(By.name("group_footer")).sendKeys("33");
-    }
-
-    public void initGroupCreation() {
-      wd.findElement(By.name("new")).click();
-    }
-
     public void fillContactForm(ContactData contactData) {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
