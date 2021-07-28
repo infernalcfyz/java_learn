@@ -2,37 +2,32 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 public class GroupHelper extends HelperBase {
     public GroupHelper(WebDriver wd) {
         super(wd);
 
     }
-    public void returnToGroupPage () {wd.findElement(By.linkText("group page")).click();}
+    public void returnToGroupPage () {click(By.linkText("group page"));}
 
     public void submitGroupCreation() {
-      wd.findElement(By.name("submit")).click();
+      click(By.name("submit"));
     }
 
-    public void fillGroupForm() {
-      wd.findElement(By.name("group_name")).click();
-      wd.findElement(By.name("group_name")).clear();
-      wd.findElement(By.name("group_name")).sendKeys("11");
-      wd.findElement(By.name("group_header")).click();
-      wd.findElement(By.name("group_header")).clear();
-      wd.findElement(By.name("group_header")).sendKeys("22");
-      wd.findElement(By.name("group_footer")).click();
-      wd.findElement(By.name("group_footer")).clear();
-      wd.findElement(By.name("group_footer")).sendKeys("33");
+    public void fillGroupForm(GroupData groupData) {
+      type(By.name("group_name"), groupData.getGroup_name());
+      type(By.name("group_header"), groupData.getGroup_header());
+      type(By.name("group_footer"), groupData.getGroup_footer());
     }
 
     public void initGroupCreation() {
-      wd.findElement(By.name("new")).click();
+      click(By.name("new"));
     }
 
-    public void deleteSelectedGroups() {wd.findElement(By.name("delete")).click();}
+    public void deleteSelectedGroups() {click(By.name("delete"));}
 
-    public void selectGroup () {wd.findElement(By.name("selected[]")).click();}
+    public void selectGroup () {click(By.name("selected[]"));}
 
 
 }
