@@ -21,4 +21,7 @@ public class NavigationHelper {
     public void Logout() {
       wd.findElement(By.linkText("Logout")).click();
     }
+    public void gotoNewContact() {
+        wd.findElement(By.linkText("add new")).click();
+    }
 }
