@@ -11,6 +11,7 @@ public class TestGroup4 extends TestBase {
     app.getGroupHelper().initGroupCreation();
     app.getGroupHelper().fillGroupForm (new GroupData("11", "22", "33"));
     app.getGroupHelper().submitGroupCreation();
+    app.getGroupHelper().returnToGroupPage();
     app.getNavigationHelper().Logout();
   }
 
