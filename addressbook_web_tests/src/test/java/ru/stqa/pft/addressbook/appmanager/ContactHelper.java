@@ -41,7 +41,7 @@ public class ContactHelper extends HelperBase {
         wd.switchTo().alert().accept();
     }
 
-    public void selectContact () {click(By.id("39"));}
+    public void selectContact () {click(By.id("42"));}
 
     public void editContact () {
         click(By.xpath("//img[@alt='Edit']"));
