@@ -41,7 +41,7 @@ public class ContactHelper extends HelperBase {
         wd.switchTo().alert().accept();
     }
 
-    public void selectContact () {click(By.id("42"));}
+    public void selectContact () {click(By.name("selected[]"));}
 
     public void editContact () {
         click(By.xpath("//img[@alt='Edit']"));
@@ -49,5 +49,15 @@ public class ContactHelper extends HelperBase {
 
     public void submitContactEdit () {
         click(By.name("update"));
+    }
+
+    public void createContact(ContactData contact, boolean b) {
+        click(By.linkText("add new"));
+        fillContactForm (contact, true);
+        submitContactCreation();
+    }
+
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
     }
 }
