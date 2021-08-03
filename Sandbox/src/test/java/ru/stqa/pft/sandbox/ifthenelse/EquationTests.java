@@ -1,4 +1,4 @@
-package ru.stqa.pft.ifthenelse;
+package ru.stqa.pft.sandbox.ifthenelse;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

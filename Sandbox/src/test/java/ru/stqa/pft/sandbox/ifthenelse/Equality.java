@@ -1,4 +1,4 @@
-package ru.stqa.pft.ifthenelse;
+package ru.stqa.pft.sandbox.ifthenelse;
 
 public class Equality {
     public static void main(String [] args) {
