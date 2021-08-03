@@ -9,7 +9,7 @@ public class ContactEditTests extends TestBase{
 
     public void testContactEdit () {
         app.getContactHelper().editContact();
-        app.getContactHelper().fillContactForm (new ContactData("Cfyz", "Olegovich", "Markin", "RaccoonCfyz", "qwe", "rty", "123", "456", "0987", "hasbeendone", "killmepls", null), false);
+        app.getContactHelper().fillContactForm (new ContactData("11", "Olegovich", "Markin", "RaccoonCfyz", "qwe", "rty", "123", "456", "0987", "hasbeendone", "killmepls", null), false);
         app.getContactHelper().submitContactEdit();
         app.getNavigationHelper().returnToHomePage();
         app.getNavigationHelper().Logout();
