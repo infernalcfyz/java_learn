@@ -16,7 +16,7 @@ public class ContactEditTests extends TestBase{
                     "77", "88", "99", "1010", "1234", "11"), true);
             app.getNavigationHelper().returnToHomePage();
         }
-        app.getContactHelper().editContact();
+        app.getContactHelper().editContact(before - 1);
         app.getContactHelper().fillContactForm (new ContactData("11", "Olegovich", "Markin", "RaccoonCfyz", "qwe", "rty", "123", "456", "0987", "hasbeendone", "killmepls", null), false);
         app.getContactHelper().submitContactEdit();
         app.getNavigationHelper().returnToHomePage();

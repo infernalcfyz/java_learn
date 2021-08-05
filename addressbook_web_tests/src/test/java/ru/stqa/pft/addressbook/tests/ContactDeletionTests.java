@@ -16,7 +16,7 @@ public class ContactDeletionTests extends TestBase{
                     "77", "88", "99", "1010", "1234", "11"), true);
             app.getNavigationHelper().returnToHomePage();
         }
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before - 1);
         app.getContactHelper().deleteContact();
         app.getNavigationHelper().returnToHomePage();
         int after = app.getContactHelper().getContactCount();
