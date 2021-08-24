@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class TestContact extends TestBase {
@@ -12,13 +13,22 @@ public class TestContact extends TestBase {
   public void testContact() {
     app.getNavigationHelper().returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
+    ContactData contact = new ContactData("44", null, "33", null, null,
+            null, null, null, null, null, null, "11");
     app.getNavigationHelper().gotoNewContact();
-    app.getContactHelper().fillContactForm (new ContactData("11", "22", "33", "44", "55", "66", "77", "88", "99", "1010", "1234", "11"), true);
+    app.getContactHelper().fillContactForm (contact, true);
     app.getContactHelper().submitContactCreation();
     app.getNavigationHelper().returnToHomePage();
     List<ContactData> after= app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(),before.size() + 1);
     app.getNavigationHelper().Logout();
+
+    contact.setId(after.stream().max( (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+    before.add(contact);
+    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
   }
 
 }
