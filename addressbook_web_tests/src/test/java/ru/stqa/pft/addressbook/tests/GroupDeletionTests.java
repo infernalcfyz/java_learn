@@ -12,6 +12,7 @@ public class GroupDeletionTests extends TestBase{
 
     @Test
     public void testGroupDeletion () {
+        app.getNavigationHelper().login("admin", "secret");
         app.getNavigationHelper().gotoGroupPage();
         if (! app.getGroupHelper().isThereAGroup()) {
             app.getGroupHelper().createGroup (new GroupData("11", null, null));
@@ -25,6 +26,7 @@ public class GroupDeletionTests extends TestBase{
 
         before.remove(before.size() - 1);
         Assert.assertEquals (before, after);
+        app.getNavigationHelper().Logout();
 
     }
 

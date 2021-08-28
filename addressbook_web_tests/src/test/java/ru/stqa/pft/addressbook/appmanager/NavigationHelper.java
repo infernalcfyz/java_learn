@@ -33,4 +33,10 @@ public class NavigationHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
+    public void login(String username, String password) {
+        type (By.name("user"),username);
+        type (By.name("pass"),password);
+        click(By.xpath("//input[@value='Login']"));
+    }
+
 }

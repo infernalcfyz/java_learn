@@ -11,6 +11,7 @@ public class GroupModificationTests extends TestBase{
 
     @Test
     public void testGroupModification() {
+        app.getNavigationHelper().login("admin", "secret");
         app.getNavigationHelper().gotoGroupPage();
         if (! app.getGroupHelper().isThereAGroup()) {
             app.getGroupHelper().createGroup (new GroupData("11", null, null));
@@ -24,7 +25,6 @@ public class GroupModificationTests extends TestBase{
         app.getGroupHelper().returnToGroupPage();
         List<GroupData> after = app.getGroupHelper().getGroupList();
         Assert.assertEquals(after.size(),before.size());
-        app.getNavigationHelper().Logout();
 
         before.remove(before.size() - 1);
         before.add(group);
@@ -32,5 +32,6 @@ public class GroupModificationTests extends TestBase{
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before, after);
+        app.getNavigationHelper().Logout();
     }
 }

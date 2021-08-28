@@ -8,9 +8,9 @@ import java.util.List;
 
 public class ContactDeletionTests extends TestBase{
 
-    @Test
-
+    @Test (enabled = false)
     public void testContactDeletion() {
+        app.getNavigationHelper().login("admin", "secret");
         app.getNavigationHelper().returnToHomePage();
         if (! app.getContactHelper().isThereAGroup()) {
             app.getContactHelper().createContact (new ContactData("11", null, "33", "44", "55", "66",
@@ -23,9 +23,8 @@ public class ContactDeletionTests extends TestBase{
         app.getNavigationHelper().returnToHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(),before.size() - 1);
-        app.getNavigationHelper().Logout();
-
         before.remove(before.size() - 1);
         Assert.assertEquals (before, after);
+        app.getNavigationHelper().Logout();
     }
 }

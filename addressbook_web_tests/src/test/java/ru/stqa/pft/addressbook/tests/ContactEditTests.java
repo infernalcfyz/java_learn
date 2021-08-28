@@ -9,9 +9,10 @@ import java.util.List;
 
 public class ContactEditTests extends TestBase{
 
-    @Test
+    @Test (enabled = false)
 
     public void testContactEdit () {
+        app.getNavigationHelper().login("admin", "secret");
         app.getNavigationHelper().returnToHomePage();
         if (! app.getContactHelper().isThereAGroup()) {
             app.getContactHelper().createContact (new ContactData("11", null, "33", "44", "55", "66",
@@ -27,7 +28,6 @@ public class ContactEditTests extends TestBase{
         app.getNavigationHelper().returnToHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(),before.size());
-        app.getNavigationHelper().Logout();
 
         before.remove(before.size() - 1);
         before.add(contact);
@@ -35,5 +35,6 @@ public class ContactEditTests extends TestBase{
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before, after);
+        app.getNavigationHelper().Logout();
     }
 }

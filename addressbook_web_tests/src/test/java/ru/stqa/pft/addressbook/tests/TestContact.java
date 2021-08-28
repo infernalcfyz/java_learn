@@ -11,6 +11,7 @@ public class TestContact extends TestBase {
 
   @Test
   public void testContact() {
+    app.getNavigationHelper().login("admin", "secret");
     app.getNavigationHelper().returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     ContactData contact = new ContactData("44", null, "33", null, null,
@@ -21,7 +22,6 @@ public class TestContact extends TestBase {
     app.getNavigationHelper().returnToHomePage();
     List<ContactData> after= app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(),before.size() + 1);
-    app.getNavigationHelper().Logout();
 
     contact.setId(after.stream().max( (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(contact);
@@ -29,6 +29,7 @@ public class TestContact extends TestBase {
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(before, after);
+    app.getNavigationHelper().Logout();
   }
 
 }

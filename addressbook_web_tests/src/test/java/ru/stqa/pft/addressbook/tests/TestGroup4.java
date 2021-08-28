@@ -11,6 +11,7 @@ public class TestGroup4 extends TestBase {
 
   @Test
   public void testGroup4() {
+    app.getNavigationHelper().login("admin", "secret");
     app.getNavigationHelper().gotoGroupPage();
     List<GroupData> before = app.getGroupHelper().getGroupList();
     GroupData group = new GroupData("11", null, null);
@@ -20,7 +21,6 @@ public class TestGroup4 extends TestBase {
     app.getGroupHelper().returnToGroupPage();
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(),before.size() + 1);
-    app.getNavigationHelper().Logout();
 
     group.setId(after.stream().max( (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(group);
@@ -28,6 +28,7 @@ public class TestGroup4 extends TestBase {
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(before, after);
+    app.getNavigationHelper().Logout();
   }
 
 }
