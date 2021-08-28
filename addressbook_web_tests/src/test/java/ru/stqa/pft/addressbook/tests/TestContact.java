@@ -11,15 +11,15 @@ public class TestContact extends TestBase {
 
   @Test
   public void testContact() {
-    app.getNavigationHelper().login("admin", "secret");
-    app.getNavigationHelper().returnToHomePage();
+    app.goTo().login("admin", "secret");
+    app.goTo().returnToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     ContactData contact = new ContactData("44", null, "33", null, null,
             null, null, null, null, null, null, "11");
-    app.getNavigationHelper().gotoNewContact();
+    app.goTo().gotoNewContact();
     app.getContactHelper().fillContactForm (contact, true);
     app.getContactHelper().submitContactCreation();
-    app.getNavigationHelper().returnToHomePage();
+    app.goTo().returnToHomePage();
     List<ContactData> after= app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(),before.size() + 1);
 
@@ -29,7 +29,7 @@ public class TestContact extends TestBase {
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(before, after);
-    app.getNavigationHelper().Logout();
+    app.goTo().Logout();
   }
 
 }
