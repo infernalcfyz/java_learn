@@ -8,6 +8,19 @@ public class GroupData {
     private String group_header;
     private String group_footer;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GroupData groupData = (GroupData) o;
+        return id == groupData.id && Objects.equals(group_name, groupData.group_name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, group_name);
+    }
+
     public GroupData withheader(String group_header) {
         this.group_header = group_header;
         return this;
@@ -37,19 +50,6 @@ public class GroupData {
     public String getGroup_header() {return group_header;}
 
     public String getGroup_footer() {return group_footer;}
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GroupData groupData = (GroupData) o;
-        return Objects.equals(group_name, groupData.group_name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(group_name);
-    }
 
     @Override
     public String toString() {
